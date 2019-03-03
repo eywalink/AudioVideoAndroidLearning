@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.util.AttributeSet;
@@ -20,9 +21,12 @@ public class MySurfaceView extends SurfaceView
 
 
     private Bitmap bitmap;
+    private Paint paint = new Paint();
 
     public MySurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.STROKE);
     }
 
     public void showImage(@DrawableRes int resId){
@@ -32,18 +36,12 @@ public class MySurfaceView extends SurfaceView
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.drawBitmap(bitmap, 0, 0, null);
-    }
-
-    @Override
     public void surfaceCreated(final SurfaceHolder holder) {
         Canvas canvas = null;
         try {
             canvas = holder.lockCanvas(null);
             synchronized (holder) {
-                onDraw(canvas);
+                canvas.drawBitmap(bitmap, 0, 0, paint);
             }
         } catch (Exception e) {
             e.printStackTrace();
