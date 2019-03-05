@@ -2,6 +2,7 @@ package cn.eywalink.audiovideoandroidlearning.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView(){
         rvPlan = findViewById(R.id.rv_plan);
         rvPlan.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        rvPlan.addItemDecoration(new DividerItemDecoration(getBaseContext(), DividerItemDecoration.VERTICAL));
         rvPlan.setAdapter(new PlanAdapter(data));
     }
 }
