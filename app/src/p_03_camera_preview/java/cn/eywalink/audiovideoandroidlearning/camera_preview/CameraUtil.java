@@ -19,7 +19,7 @@ public enum CameraUtil {
 
     Camera camera;
 
-    public CameraUtil switchCamera(boolean isBackCameraOn) {
+    public CameraUtil openCamera(boolean isBackCameraOn) {
         int cameraCount;
         Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
         cameraCount = Camera.getNumberOfCameras();

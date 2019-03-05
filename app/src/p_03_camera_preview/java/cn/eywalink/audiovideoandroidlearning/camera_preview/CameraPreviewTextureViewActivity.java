@@ -9,14 +9,9 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.TextureView;
 import android.widget.Toast;
 
-import java.io.IOException;
-
-import cn.eywalink.audiovideoandroidlearning.R;
 import cn.eywalink.audiovideoandroidlearning.main.utils.permissions.RxPermissions;
 import io.reactivex.functions.Consumer;
 
@@ -66,17 +61,7 @@ public class CameraPreviewTextureViewActivity extends AppCompatActivity implemen
 
     @Override
     public void onSurfaceTextureAvailable(final SurfaceTexture surfaceTexture, int i, int i1) {
-        // todo  可以改成 HandlerThread，精简些
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // 让camera的预览放在非主线程。。
-                Looper.prepare();
-                CameraUtil.get().switchCamera(true)
-                        .setStartPreview(surfaceTexture, new CameraCallback());
-                Looper.loop();
-            }
-        }).start();
+        new CameraHandlerThread(surfaceTexture).openCamera(new CameraCallback());
     }
 
     @Override

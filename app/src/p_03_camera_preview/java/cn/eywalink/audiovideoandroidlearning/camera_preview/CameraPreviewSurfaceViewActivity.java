@@ -9,12 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 import android.widget.Toast;
 
-import java.io.IOException;
-
-import cn.eywalink.audiovideoandroidlearning.R;
 import cn.eywalink.audiovideoandroidlearning.main.utils.permissions.RxPermissions;
 import io.reactivex.functions.Consumer;
 
@@ -69,7 +65,7 @@ public class CameraPreviewSurfaceViewActivity extends AppCompatActivity implemen
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         if (requestOk){
-            CameraUtil.get().switchCamera(true)
+            CameraUtil.get().openCamera(true)
                     .setStartPreview(surfaceHolder, new Camera.PreviewCallback() {
                 @Override
                 public void onPreviewFrame(byte[] bytes, Camera camera) {
