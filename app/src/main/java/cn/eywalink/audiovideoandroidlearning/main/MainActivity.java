@@ -1,10 +1,13 @@
 package cn.eywalink.audiovideoandroidlearning.main;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,8 @@ import cn.eywalink.audiovideoandroidlearning.camera_preview.CameraPreviewSurface
 import cn.eywalink.audiovideoandroidlearning.camera_preview.CameraPreviewTextureViewActivity;
 import cn.eywalink.audiovideoandroidlearning.camera_preview.TestActivity;
 import cn.eywalink.audiovideoandroidlearning.main.entity.Plan;
+import cn.eywalink.audiovideoandroidlearning.main.utils.permissions.RxPermissions;
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +37,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initData();
         initView();
+
+        reqPermission();
+    }
+
+    @SuppressLint("CheckResult")
+    private void reqPermission() {
+        new RxPermissions(this)
+                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean){
+                        if (aBoolean) {
+                        } else {
+                        }
+                    }
+                });
     }
 
     private void initData(){
