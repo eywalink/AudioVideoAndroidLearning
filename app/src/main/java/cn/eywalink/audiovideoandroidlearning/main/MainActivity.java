@@ -21,6 +21,7 @@ import cn.eywalink.audiovideoandroidlearning.camera_preview.CameraPreviewTexture
 import cn.eywalink.audiovideoandroidlearning.camera_preview.TestActivity;
 import cn.eywalink.audiovideoandroidlearning.main.entity.Plan;
 import cn.eywalink.audiovideoandroidlearning.main.utils.permissions.RxPermissions;
+import cn.eywalink.audiovideoandroidlearning.media_mp4.MediaActivity;
 import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("CheckResult")
     private void reqPermission() {
         new RxPermissions(this)
-                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.RECORD_AUDIO
+                        )
                 .subscribe(new Consumer<Boolean>() {
                     @Override
                     public void accept(Boolean aBoolean){
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(new Plan(array[0], DrawPictureActivity.class));
         data.add(new Plan(array[1], AudioRecordAndPlayActivity.class));
         data.add(new Plan(array[2], CameraPreviewActivity.class));
-        data.add(new Plan(array[3], TestActivity.class));
+        data.add(new Plan(array[3], MediaActivity.class));
 
     }
 

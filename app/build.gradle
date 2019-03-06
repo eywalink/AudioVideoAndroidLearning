@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "cn.eywalink.audiovideoandroidlearning"
-        minSdkVersion 14
+        minSdkVersion 18
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -24,6 +24,7 @@ android {
                         'p_01_draw_picture',
                         'p_02_read_write_wav',
                         'p_03_camera_preview',
+                        'p_04_media_mp4',
             ]
             dirs.each { dir ->
                 java.srcDir("src/$dir/java")

@@ -32,6 +32,8 @@
         <activity android:name=".camera_preview.CameraPreviewTextureViewActivity" />
         <activity android:name=".camera_preview.TestActivity" />
         <activity android:name=".camera_preview.CameraPreviewActivity" />
+        <activity android:name=".media_mp4.MediaActivity" />
+        <activity android:name=".media_mp4.AudioRecordActivity" />
     </application>
 
 </manifest>
