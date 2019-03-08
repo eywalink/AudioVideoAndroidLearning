@@ -30,6 +30,7 @@ android {
             dirs.each { dir ->
                 java.srcDir("src/$dir/java")
                 res.srcDir("src/$dir/res")
+                assets.srcDir("src/$dir/assets")
             }
         }
     }
