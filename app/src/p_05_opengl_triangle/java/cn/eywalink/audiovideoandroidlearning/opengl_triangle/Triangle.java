@@ -8,6 +8,8 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL;
 
+import cn.eywalink.audiovideoandroidlearning.main.utils.AssetsUtils;
+
 /**
  * Created by lixin on 2019/3/8.
  */
@@ -26,20 +28,6 @@ public class Triangle {
     // 设置颜色，分别为red, green, blue 和alpha (opacity)
     float color[] = { 0.63671875f, 0.76953125f, 0.22265625f, 1.0f };
 
-
-    private final String vertexShaderCode =
-            "attribute vec4 vPosition;" +
-                    "void main(){" +
-                    "  gl_Position = vPosition;" +
-                    "}";
-
-    private final String fragmentShaderCode =
-            "precision mediump float;" +
-                    "uniform vec4 vColor;" +
-                    "void main(){" +
-                    "   gl_FragColor = vColor;" +
-                    "}";
-
     private final int mProgram;
 
 
@@ -50,6 +38,21 @@ public class Triangle {
     private final int vertexCount = triangleCoords.length / COORDS_PER_VERTEX;
     // 定点之间的偏移量
     private final int vertexStride = COORDS_PER_VERTEX * 4;// 每个定点4个字节
+
+    /*
+    private final String vertexShaderCode =
+            "attribute vec4 vPosition;" +
+                    "void main() {" +
+                    "  gl_Position = vPosition;" +
+                    "}";
+
+    private final String fragmentShaderCode =
+            "precision mediump float;" +
+                    "uniform vec4 vColor;" +
+                    "void main() {" +
+                    "  gl_FragColor = vColor;" +
+                    "}";
+                    */
 
     public Triangle() {
 
@@ -68,8 +71,9 @@ public class Triangle {
         // 设置 buffer 从第一个 position 读
         vertexBuffer.position(0);
 
-        mProgram = GLSLUtil.loadProgram(vertexShaderCode, fragmentShaderCode);
-
+        //mProgram = GLSLUtil.loadProgram(vertexShaderCode, fragmentShaderCode);
+        mProgram = GLSLUtil.loadProgram(AssetsUtils.getFromAssets("vertex.glsl"),
+                AssetsUtils.getFromAssets("fragment.glsl"));
     }
 
 
