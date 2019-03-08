@@ -25,6 +25,7 @@ android {
                         'p_02_read_write_wav',
                         'p_03_camera_preview',
                         'p_04_media_mp4',
+                        'p_05_opengl_triangle',
             ]
             dirs.each { dir ->
                 java.srcDir("src/$dir/java")

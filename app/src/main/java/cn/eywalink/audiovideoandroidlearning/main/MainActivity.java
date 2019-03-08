@@ -22,6 +22,7 @@ import cn.eywalink.audiovideoandroidlearning.camera_preview.TestActivity;
 import cn.eywalink.audiovideoandroidlearning.main.entity.Plan;
 import cn.eywalink.audiovideoandroidlearning.main.utils.permissions.RxPermissions;
 import cn.eywalink.audiovideoandroidlearning.media_mp4.MediaActivity;
+import cn.eywalink.audiovideoandroidlearning.opengl_triangle.OpenGLTriangleActivity;
 import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         data.add(new Plan(array[1], AudioRecordAndPlayActivity.class));
         data.add(new Plan(array[2], CameraPreviewActivity.class));
         data.add(new Plan(array[3], MediaActivity.class));
+        data.add(new Plan(array[4], OpenGLTriangleActivity.class));
 
     }
 
